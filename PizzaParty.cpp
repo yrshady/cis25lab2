@@ -6,6 +6,9 @@ int main(){
     int heads;
     int slices;
     int hunger;
+    int slicereq;
+    int pizzas;
+    int leftovers;
 
     cout << "welcome to natanya's pizza party calculator :3" << endl;
     cout << "how many people are coming to your party?  ";
@@ -15,8 +18,14 @@ int main(){
     cout << "how many slices will each person eat?  ";
     cin >> hunger;
 
-    int pizzas = heads * hunger / slices;
-    int leftovers = (pizzas * slices) - (hunger * heads);
+    slicereq = hunger * heads;
+    pizzas = slicereq / slices;
+
+    if (slicereq % slices != 0){
+        pizzas = pizzas + 1;
+    }
+
+    leftovers = pizzas * slices - slicereq;
 
     cout << "you will need to order " << pizzas << " pizzas" <<endl;
     cout << "you will have " << leftovers << " slices leftover" << endl;
